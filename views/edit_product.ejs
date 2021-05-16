@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs') %>
+<title>Edit Post | Bluenovate</title>
+<div class="container">
+    <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
+    <script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key={API KEY}"></script>
+
+    <h1>Edit Post</h1>
+    <form action="/products/edit/<%=product._id%>" method="post">
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" class="form-control" name="name" id="" value="<%-product.name%>">
+        </div>
+       
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" name="price" value="<%-product.price%>" required>
+        </div>
+        
+        <br>
+        <input type="submit" value="Update Product" class="btn btn-primary mb-4">
+        <a href="/allproducts" class="btn btn-secondary mb-4">Cancel</a>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+    </form>
+</div>

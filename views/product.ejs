@@ -1,0 +1,87 @@
+<%- include('partials/header.ejs') %>
+
+<style>
+
+</style>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <a href="/" class="navbar-brand">Bibby</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <!-- <a href="#" class="nav-item nav-link active">Home</a>
+            <a href="#" class="nav-item nav-link">Profile</a>
+            <a href="#" class="nav-item nav-link">Messages</a>
+            <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
+        </div>
+        <div class="navbar-nav ml-auto">
+            <!-- <a href="#" class="nav-item nav-link btn btn-primary">Login</a> -->
+            
+                
+              
+          
+                <a class="nav-item nav-link btn btn-secondary" style="color: white; font-weight: bolder;" href='/allproducts'>Go Back</a>
+            
+        
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+<h1 style="margin-top: 80px;">Product Control</h1>
+<h4 class="mt-4"><%=product.name%></h4>
+<p>₦<%=product.price%></p>
+
+<%if (user) { %>
+    <a href="/products/edit/<%=product._id%>" class="btn btn-secondary mb-4">Edit Post</a>
+    
+
+   
+<% } %>
+
+<a href="#" class="btn btn-danger delete-article mb-4" data-id="<%=product._id%>">Delete Post</a>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+        
+    <script>
+       
+        $(document).ready(function () {
+    $('.delete-article').on('click', function (e) {
+        $target = $(e.target);
+        const id = $target.attr('data-id');
+        $.ajax({
+            type: 'DELETE',
+            url: '/products/' + id,
+            success: function (response) {
+                alert('Product Deleted');
+                window.location.href = '/allproducts';
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+});
+
+
+
+
+    </script>
