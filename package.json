@@ -4,7 +4,7 @@
   "description": "point of sale app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "engines": {
     "node": "v14.2.0"
