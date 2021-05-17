@@ -85,7 +85,7 @@ app.get('/allproducts', function(req, res){
         }
 
     }).sort({
-        // postDate: 'desc'
+        name: 1
     });
 });
 
@@ -122,7 +122,7 @@ app.get('/newsale', function(req, res){
         }
 
     }).sort({
-        // postDate: 'desc'
+        name: 1
     });
 });
 
